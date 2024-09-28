@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300..700&display=swap');
+
+* {
+  font-family: 'Raleway', sans-serif; /* Cambiado a un tipo de letra diferente */
+  font-weight: bold;
+  box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total */
+}
+
+/* Contenedor general que agrupa ambos cifrados */
+.contenedor-cifrado {
+  display: flex;
+  justify-content: space-around; /* Espaciar entre columnas */
+  align-items: flex-start;
+  margin: 20px;
+  gap: 20px; /* Espacio entre las columnas */
+}
+
+/* Asegurarse que cada componente (César y Escítala) tenga el mismo ancho */
+.cifrado-item {
+  flex: 1;
+  min-width: 300px; /* Ancho mínimo para asegurar que no se solapen */
+}
+
+@media screen and (max-width: 768px) {
+  /* En pantallas pequeñas volver a filas */
+  .contenedor-cifrado {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.App-header {
+  text-align: center;
+  background: linear-gradient(to right, #ad900dcc, #1ecbff);
+  color: white;
+  padding: 30px; /* Mayor espacio */
+  display: flex;
+  flex-direction: column; /* Cambiar a columna para mejor diseño */
+  align-items: center; /* Centrar contenido */
+}
+
+.contenedor {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #080808;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9); /* Fondo más claro */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-contenedor {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+input[type="text"], input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.boton-copiar, .boton-pegar {
+  padding: 10px;
+  cursor: pointer;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px; /* Asegurar que el label sea suficientemente legible */
+  text-align: center; /* Centrar el label */
+}
+
+.mensaje, .mensajeCifrado {
+  margin: 10px 0; /* Espaciado uniforme */
+  padding: 12px;
+  margin-left: 20%;
+  background: #f0f0f0; /* Fondo suave */
+  border-radius: 5px; /* Bordes redondeados */
+  width: auto;
+  max-width: 200%; /* Adaptable */
+  min-width: 40%;
+}
+
+.numeroDesplazamiento {
+  margin: 5px;
+  margin-left: 40%;
+  padding: 10px;
+  width: auto;
+  max-width: 15%;
+  min-width: 6%;
+}
+
+.cifrar, .descifrar {
+  border-radius: 10px; /* Ajuste del borde */
+  margin: 10px; /* Más espacio entre botones */
+  padding: 12px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+}
+
+.cifrar {
+  background-color: #00d31c; /* Color del botón de cifrar */
+}
+
+.descifrar {
+  background-color: #0041c2; /* Color del botón de descifrar */
+}
+
+.cifrar:hover {
+  background-color: white;
+  color: #00d31c;
+}
+
+.descifrar:hover {
+  background-color: white;
+  color: #0041c2;
+}
+
+.error-message {
+  color: red; /* Color rojo para mensajes de error */
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .formulario {
+    flex-direction: column;
+  }
+
+  input {
+    width: auto;
+  }
+
+  button {
+    width: auto;
+  }
+}
+
+.imagenes-esquinas {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.imagen-info, .imagen-uso {
+  width: 30px;
+  height: auto; /* Mantener proporción */
+}
+
+.imagen-dec-container {
+  display: flex;
+  justify-content: flex-end; /* Alinear a la derecha */
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+.imagen-dec {
+  width: 80px; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Mantener proporción */
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 100;
+  transform: translateY(-100%); /* Centra verticalmente el tooltip */
+}
+
+.imagen-cifrado {
+  width: 120px; /* Hacer la imagen más grande */
+  height: auto;
+  margin: 30px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.contenido-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%; /* Hacer el modal más ancho */
+  max-width: 700px; /* Aumentar el ancho máximo */
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.cerrar-modal {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.input-contenedor {
+  display: flex;
+  align-items: center;
+}
+
+.boton-copiar, .boton-pegar {
+  margin-left: 8px;
+  padding: 8px; /* Aumentar tamaño del botón */
+  font-size: 16px;
+  background: #ffffff;
+  border-color: #0c0c0c;
+  border-radius: 20%;
+  cursor: pointer;
+  color: #007bff;
+  transition: color 0.3s; /* Transición suave para color */
+}
+.error {
+  color: red;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #ffe0e0;
+  border: 1px solid red;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #e0ffe0;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
